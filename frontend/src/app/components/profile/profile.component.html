@@ -1,0 +1,38 @@
+<div class="container" *ngIf="currentUser; else loggedOut">
+  <header class="bg-light py-5 px-3">
+    <h3>
+      <strong>{{ currentUser.username }}</strong> Profile
+    </h3>
+  </header>
+
+  <p>
+    <strong>Access Token Header: </strong>
+    {{ currentUser.accessToken.split('.')[0] }}
+  </p>
+
+  <p>
+    <strong>Access Token Payload: </strong>
+    {{ currentUser.accessToken.split('.')[1] }}
+  </p>
+
+  <p>
+    <strong>Access Token Signature: </strong>
+    {{ currentUser.accessToken.split('.')[2] }}
+  </p>
+
+  <p>
+    <strong>Email: </strong>
+    {{ currentUser.email }}
+  </p>
+
+  <strong>Roles: </strong>
+  <ul>
+    <li *ngFor="let role of currentUser.roles">
+      {{ role }}
+    </li>
+  </ul>
+</div>
+
+<ng-template #loggedOut>
+  Please login
+</ng-template>
